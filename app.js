@@ -13,6 +13,7 @@ let scores;
 let roundScore;
 let activePlayer;
 let gamePlaying;
+let winningScore;
 
 const dice = document.querySelector('.dice');
 const score1 = document.getElementById('score-0');
@@ -23,11 +24,15 @@ const playerName1 = document.getElementById('name-0');
 const playerName2 = document.getElementById('name-1');
 const player1 = document.querySelector(`.player-0-panel`);
 const player2 = document.querySelector(`.player-1-panel`);
+const scoreInput = document.querySelector('#winning-score')
 
 init();
 
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
+  winningScore = scoreInput.value;
+  scoreInput.readOnly = true;
+
   if(gamePlaying) {
     // 1. Get random number
     let diceRoll = Math.floor(Math.random() * 6) + 1;
@@ -63,7 +68,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
   
     // Check if player won the game
-    if(scores[activePlayer] >= 100) {
+    if(scores[activePlayer] >= winningScore) {
       dice.style.display = 'none';
       document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!';
       document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
@@ -99,6 +104,7 @@ function init() {
   roundScore = 0;
   gamePlaying = true;
 
+  scoreInput.readOnly = false;
   dice.style.display = 'none';
 
   score1.textContent = '0';
