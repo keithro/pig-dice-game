@@ -70,6 +70,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     // Check if player won the game
     if(scores[activePlayer] >= winningScore) {
       dice.style.display = 'none';
+      scoreInput.readOnly = false;
       document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!';
       document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
       document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
