@@ -171,3 +171,6 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.lost-roll {  background-color: rgb(246, 81, 81); } /* rgb(235, 77, 77) */
+.lost-roll .player-score { color: #fff; }

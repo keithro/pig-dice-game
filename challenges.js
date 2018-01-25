@@ -37,7 +37,13 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
       document.querySelector(`#current-${activePlayer}`).textContent = roundScore;
     } else {
       // Next player
-      nextPlayer();
+      gamePlaying = false;
+      document.querySelector(`.player-${activePlayer}-panel`).classList.add('lost-roll');
+      setTimeout(() => {
+        document.querySelector(`.player-${activePlayer}-panel`).classList.remove('lost-roll');
+        nextPlayer();
+        gamePlaying = true;
+      }, 1000);
     }
 
     /* if(dice === 6 && lastDice === 6) {
